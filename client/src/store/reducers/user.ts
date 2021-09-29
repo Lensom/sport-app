@@ -6,28 +6,28 @@ interface IState {
   isActivated: boolean;
 }
 interface Action {
-  type: 'SET_USER',
+  type: "SET_USER";
   payload: object;
 }
 
 const initialState = {
   email: "",
   id: "",
-  isActivated: false
-}
+  isActivated: false,
+};
 
-const userReducer = (state:IState = initialState, action:Action) => {
+const userReducer = (state: IState = initialState, action: Action) => {
   switch (action.type) {
     case SET_USER:
       return {
         ...state,
-        ...action.payload
-      }
+        ...action.payload,
+      };
     default:
       return state;
   }
-}
+};
 
-export const setUserData = (payload:any) => ({type: SET_USER, payload})
+export const setUserData = (payload: any) => ({ type: SET_USER, payload });
 
 export default userReducer;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Login from "./components/form/login/Login";
 
 const App = () => {
@@ -7,6 +7,6 @@ const App = () => {
       <Login />
     </div>
   );
-}
+};
 
 export default App;

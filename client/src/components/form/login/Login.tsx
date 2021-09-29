@@ -12,44 +12,55 @@ interface IProps {
   user: IUser;
 }
 
-
-const Login: FC<IProps> = ({isAuth, user}) => {
-  const [email, setEmail] = useState('');;
-  const [password, setPassword] = useState('');
+const Login: FC<IProps> = ({ isAuth, user }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const setIsAuth = () => {
     dispatch(setUserIsRegistered());
-  }
+  };
   const setData = (payload: any) => {
     dispatch(setUserData(payload));
-  }
-
+  };
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      checkAuth(setIsAuth, setData)
+    if (localStorage.getItem("token")) {
+      checkAuth(setIsAuth, setData);
     }
   }, []);
 
   return (
     <div>
-      <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-      <button onClick={() => login(email, password, setIsAuth, setData)}>Логин</button>
-      <button onClick={() => registration(email, password, setIsAuth, setData)}>Регистрация</button>
-   
-    {isAuth ? user.email :'Пользователь не найден'}
-   
+      <input
+        type="text"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={() => login(email, password, setIsAuth, setData)}>
+        Логин
+      </button>
+      <button onClick={() => registration(email, password, setIsAuth, setData)}>
+        Регистрация
+      </button>
+
+      {isAuth ? user.email : "Пользователь не найден"}
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state: any) => {
   return {
     isAuth: state.auth.isAuth,
-    user: state.user
-  }
-}
+    user: state.user,
+  };
+};
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(Login);

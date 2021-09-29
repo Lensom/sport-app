@@ -1,6 +1,5 @@
 import AuthService from "../../services/AuthService";
 import { IUser } from "../../models/IUser";
-import { setUserIsRegistered } from "../reducers/auth";
 import axios from "axios";
 import { AuthResponse } from "../../models/response/authResponse";
 
@@ -12,6 +11,7 @@ export const login = async (email: string, password: string, setIsAuth: () => vo
     localStorage.setItem('token', response.data.accessToken);
     setIsAuth();
     setData(response.data.user);
+    
   } catch (e: any) {
     console.log(e.response?.data?.message);
   }
