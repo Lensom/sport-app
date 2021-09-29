@@ -14,7 +14,6 @@ const initialState = {
 }
 
 const authReducer = (state:IState = initialState, action:Action) => {
-  console.log(action, 'ACTion')
   switch (action.type) {
     case SET_USER_IS_AUTH:
       return {
@@ -26,9 +25,6 @@ const authReducer = (state:IState = initialState, action:Action) => {
   }
 }
 
-export const setUserIsRegistered = (payload:any) => {
-  console.log(payload, 'paylaod');
-  return {type: SET_USER_IS_AUTH, payload}
-}
+export const setUserIsRegistered = () => ({type: SET_USER_IS_AUTH});
 
 export default authReducer;

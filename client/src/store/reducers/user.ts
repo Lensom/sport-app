@@ -5,10 +5,9 @@ interface IState {
   id: string;
   isActivated: boolean;
 }
-
 interface Action {
   type: 'SET_USER',
-  payload: boolean;
+  payload: object;
 }
 
 const initialState = {
@@ -22,7 +21,7 @@ const userReducer = (state:IState = initialState, action:Action) => {
     case SET_USER:
       return {
         ...state,
-        user: action.payload
+        ...action.payload
       }
     default:
       return state;
